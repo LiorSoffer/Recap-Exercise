@@ -55,13 +55,15 @@ In the second part, Minikube was used to create a local Kubernetes cluster. Both
    ```bash
    kubectl port-forward service/express-service 3001:80
    ```
-5. Scale the Express deployment to 5 replicas:
+5. Open a new terminal (keep the first one open)
+
+6. Scale the Express deployment to 5 replicas:
    ```bash
    kubectl scale deployment express-app --replicas=5
    ```
-6. Expose the React application using Minikube’s service URL:
+7. Expose the React application using Minikube’s service URL:
    ```bash
-   minikube service react-app-service --url
+   minikube service react-service --url
    ```
    Open the URL provided to access the React application.
 
