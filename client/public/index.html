@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fetch and Display Response</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    #response {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      width: 100%;
+      max-width: 500px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Click the button to fetch data</h1>
+  <button id="fetchButton">Fetch Data</button>
+
+  <div id="response"></div>
+
+  <script>
+    // JavaScript to handle the button click and fetch data
+    document.getElementById('fetchButton').addEventListener('click', async () => {
+      try {
+        // Change the URL here to the address you want to fetch
+        const url = '/hi';
+        // Make the fetch request
+        const response = await fetch(url);
+        
+        if (response.ok) {
+          const data = await response.json(); // Assuming JSON response
+          document.getElementById('response').textContent = JSON.stringify(data, null, 2); // Display response
+        } else {
+          document.getElementById('response').textContent = `Error: ${response.statusText}`;
+        }
+      } catch (error) {
+        document.getElementById('response').textContent = `Error: ${error.message}`;
+      }
+    });
+  </script>
+
+</body>
+</html>
+

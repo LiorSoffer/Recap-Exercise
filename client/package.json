@@ -1,5 +1,5 @@
 {
-  "name": "express",
+  "name": "client",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,8 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "cors": "^2.8.5",
+    "axios": "^1.7.9",
+    "dotenv": "^16.4.7",
     "express": "^4.21.1"
   }
 }

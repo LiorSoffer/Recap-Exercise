@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-app
+spec:
+  replicas: 1  # Number of instances/pods you want to run
+  selector:
+    matchLabels:
+      app: client-app  # This must match the labels in the pod template
+  template:
+    metadata:
+      labels:
+        app: client-app  # Ensure the label is consistent here
+    spec:
+      containers:
+      - name: client-app
+        image: liorsoffer/client-app # Add the tag to the image
+        ports:
+        - containerPort: 3000  # The port your Express app is listening on
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-service
+spec:
+  type: NodePort  # Specify the type as NodePort
+  selector:
+    app: client-app  # Match the app label from the Deployment
+  ports:
+    - protocol: TCP
+      port: 80  # The port on the service
+      targetPort: 3000  # Match the container's port
+      nodePort: 30080  # Port on the node (can be any available port in the 30000-32767 range)
+
